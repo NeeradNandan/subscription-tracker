@@ -3,6 +3,7 @@ import { PORT } from "./config/env.js"
 import connectToDB from "./database/mongodb.js";
 import rootRouter from "./routes/root.routes.js";
 
+
 const app = express();
 
 await connectToDB();
