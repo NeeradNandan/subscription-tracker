@@ -1,8 +1,9 @@
+import cookieParser from "cookie-parser";
 import express from "express";
 import { PORT } from "./config/env.js"
 import connectToDB from "./database/mongodb.js";
 import rootRouter from "./routes/root.routes.js";
-
+import errorMiddleware from "./middlewares/error.middleware.js";
 
 const app = express();
 
@@ -10,7 +11,13 @@ await connectToDB();
 
 app.use(express.json());
 
+app.use(express.urlencoded({ extended: true }));
+
+app.use(cookieParser());
+
 app.use(rootRouter);
+
+app.use(errorMiddleware);
 
 
 app.get('/', (req, res) => {
