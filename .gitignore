@@ -132,3 +132,4 @@ dist
 
 # .idea .vs
 .idea
+.vercel
