@@ -51,6 +51,12 @@ export const getAllSubscriptions = async (req, res, next) => {
 
 export const getUserSubscription = async (req, res, next) => {
 	try {
+		const isSubscription = await Subscription.exists({_id: req.params.id});
+		if(!isSubscription) return res.status(401).json({
+			success: false,
+			message: 'Subscription not found'
+		})
+		
 	    const userSubscription = await Subscription.findOne({_id: req.params.id});
 		
 		return res.status(200).json({
@@ -61,4 +67,23 @@ export const getUserSubscription = async (req, res, next) => {
 	    next(error);
 	}
 };
+
+export const deleteSubscription = async (req, res, next) => {
+	try {
+		const isSubscription = await Subscription.exists({_id: req.params.id});
+		if(!isSubscription) return res.status(401).json({
+			success: false,
+			message: 'Subscription not found'
+		})
+		
+		await Subscription.deleteOne({_id: req.params.id});
+		
+		return res.status(200).json({
+			success: true,
+			message: `Subscription with ${req.params.id} deleted successfully`
+		})
+	} catch (error) {
+	    next(error);
+	}
+}
 

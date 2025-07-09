@@ -1,6 +1,10 @@
 import { Router } from 'express';
 import {
-	createSubscription, getAllSubscriptions, getUserSubscription, getUserSubscriptions,
+	createSubscription,
+	deleteSubscription,
+	getAllSubscriptions,
+	getUserSubscription,
+	getUserSubscriptions,
 } from "../controllers/subscription.controller.js";
 import { authorize } from "../middlewares/auth.middleware.js";
 
@@ -15,8 +19,7 @@ router.post( '/', authorize, createSubscription);
 router.put('/:id', (req, res) =>
 	res.send({ title: 'UPDATE subscription details '}));
 
-router.delete('/:id', (req, res) =>
-	res.send({ title: 'DELETE subscription '}));
+router.delete('/:id',authorize, deleteSubscription);
 
 router.get( '/user/:id', authorize, getUserSubscriptions);
 
