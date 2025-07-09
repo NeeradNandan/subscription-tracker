@@ -1,4 +1,4 @@
-import User from "../database/models/user.model.js";
+import User from "../models/user.model.js";
 
 export async function getUsers(req, res, next) {
 	try {

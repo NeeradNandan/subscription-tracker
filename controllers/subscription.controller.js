@@ -1,6 +1,6 @@
 import { SERVER_URL } from "../config/env.js";
 import { workflowClient } from "../config/upstash.config.js";
-import Subscription from "../database/models/subscription.model.js";
+import Subscription from "../models/subscription.model.js";
 
 export const createSubscription = async (req, res, next) => {
 	try {

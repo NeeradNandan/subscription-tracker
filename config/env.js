@@ -12,4 +12,5 @@ export const {
 	QSTASH_URL,
 	QSTASH_TOKEN,
 	SERVER_URL,
+	NODEMAIL_PASSWORD
 } = process.env;
