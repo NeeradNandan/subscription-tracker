@@ -28,7 +28,7 @@ const SubscriptionSchema =
 			enum: ['Sports', 'News', 'Entertainment', 'Lifestyle', 'Technology', 'Finance', 'Politics', 'Others'],
 			required: [true, 'Subscription category is required'],
 		},
-		payment: {
+		paymentMethod: {
 			type: String,
 			required: [true, 'Payment is required'],
 			trim: true,
@@ -47,7 +47,7 @@ const SubscriptionSchema =
 		},
         renewalDate: {
             type: Date,
-            required: [true, 'Subscription renewal date is required'],
+            //required: [true, 'Subscription renewal date is required'],
             validate: {
                 validator: function (value) {
 					return value >= this.startDate
@@ -81,7 +81,7 @@ SubscriptionSchema.pre('save',
 	}
 	
 	next();
-                       })
+})
 
 const Subscription = mongoose.model('Subscription', SubscriptionSchema);
 
